@@ -6,6 +6,7 @@
 
 <div class="row mx-0">
     <div class="col-8">
+    
         <?php
         // Tableau des arguments à passer à la requête
         // Attention : WP_Query ne fonctionne pas si ce tableau est vide
@@ -61,7 +62,7 @@
         <?php endif; ?>
         <!-- fin nouvelle widget area -->
         
-
+            
     </div>
 </div>
 

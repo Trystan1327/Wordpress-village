@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-0  mb-3">
+<nav id="navbar" class="navbar navbar-expand-sm bg-primary navbar-dark mb-3 ">
   <?php
   $custom_logo_id = get_theme_mod('custom_logo');
 
@@ -10,22 +10,26 @@
     echo '<h1>' . get_bloginfo('name') . '</h1>';
   }
   ?>
-  <a class="navbar-brand ml-2" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <?php wp_nav_menu([
-    'theme_location' => 'header',
-    'depth'             => 5,
-    'menu_class'        => 'nav navbar-nav',
-    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-    'walker'            => new wp_bootstrap_navwalker()
-
-
-  ]) ?>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-  <?= get_search_form() ?>
-  </div>
-
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    
+        <?php  
+        wp_nav_menu(array(
+            'theme_location'    => 'principal',
+            'depth'             => 5,
+            'menu_class'        => 'nav navbar-nav',
+            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+            'walker'            => new wp_bootstrap_navwalker()
+            )
+        ); 
+        ?>                  
+    </div> 
+    <?= get_search_form() ?>
 </nav>
+
+  
+

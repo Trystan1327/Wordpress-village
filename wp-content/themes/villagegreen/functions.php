@@ -18,7 +18,7 @@ add_action('after_setup_theme', 'villagegreen_custom_logo_setup');
 
 
 add_theme_support('menus');
-register_nav_menu('header', 'En tête du menu');
+register_nav_menu("principal", "Menu principal");
 register_nav_menu('footer', 'Pied de page');
 
 function register_navwalker()
@@ -64,11 +64,28 @@ function header2_widgets_init()
    ));
 }
 
+
+
 add_action('widgets_init', 'header2_widgets_init');
 
-add_action('get_header', 'remove_admin_login_header');
-
-function remove_admin_login_header() {
-    remove_action('wp_head', '_admin_bar_bump_cb');
+//shortcode
+function fonctionGrandTitre($param, $content) {
+   return '<h1>' . $content . '</h1>';
 }
+add_shortcode('grandTitre', 'fonctionGrandTitre');
 
+function fonctionNomTaille($param) {
+   extract(
+     shortcode_atts(
+       array(
+         'nom' => 'Dupont',
+         'taille' => 186
+       ),
+       $param
+     )
+   );
+   return 'Monsieur '.$nom." mesure ".$taille;
+};
+
+
+ add_shortcode('nomTaille', 'fonctionNomTaille');
